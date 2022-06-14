@@ -6,8 +6,8 @@ if(isset($_POST['btnlogin'])){
 	$txt_user = $_POST['username']; //sesuai name di form
 	$txt_pass = md5($_POST['password']); //sesuai name di form
 	//query untuk validasi ke database apakah username dan password ditemukan&sesuai
-	//$connect_db, variabel diambil dari file koneksi_db.php
-	$result = mysqli_query($connect_db, "SELECT * FROM mst_userlogin where username= '".$txt_user."' AND password = '".$txt_pass."' AND isactive=1");
+	//$koneksi, variabel diambil dari file koneksi_db.php
+	$result = mysqli_query($koneksi, "SELECT * FROM mst_userlogin where username= '".$txt_user."' AND password = '".$txt_pass."' AND isactive=1");
 	//mysqli_num_rows($result) , fungsi untuk menghitung hasil output dari query berupa angka		
 	if(mysqli_num_rows($result) > 0){
 		//jika hasil query data lebih dari 0

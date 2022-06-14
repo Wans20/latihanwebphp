@@ -103,46 +103,28 @@ require_once("config/config.php");
 	<section id="blog" class="bg-white">
 		<div class="container-fluid d-flex flex-column align-items-center p-4">
 			<h1 class="text-primary text-opacity-100 pb-3">=== My Blog ===</h1>
+			<?php $qryblog=mysqli_query($koneksi,'select*from mst_blog');
+						while($qblog=mysqli_fetch_array($qryblog)){
+						?>
 			<div class="row mb-4">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<img src="assets/images/gambar1.jpg" width="270" class="img-fluid img-thumbnail" />
+					<img src="assets/images/<?= $qblog['image']?>" width="270" class="img-fluid img-thumbnail" />
 				</div>
 				<div class="col-md-6">
-					<h4>Judul Artikel-1</h4>
+					<h4><?= $qblog['judul']?></h4>
 					<div>
-						<span class="badge bg-info text-white rounded-3 fs-6">10/11/2011</span>
-						<span class="text-primary fs-6">Created By : Aninur</span>
+						<span class="badge bg-info text-white rounded-3 fs-6"><?=$qblog['date_input']?></span>
+						<span class="text-primary fs-6">Created By : <?=$qblog['author']?></span>
 					</div>
 					<p>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores fugit quod cumque provident
-						quasi! Ut minus veritatis sed atque, aut
-						modi fugit? Veniam quos voluptatum harum cumque vero, numquam dolore! [ <a
-							href="detailblog1.html">Baca Selengkapnya</a> ]
+						<?= $qblog['isi']?>
+						<a href='detail_blog.php?id=<?=$qblog['id_blog']?>'>Baca Selengkapnya</a>
 					</p>
 					<hr />
 				</div>
 			</div>
-			<div class="row mb-4">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<img src="assets/images/gambar1.jpg" width="270" class="img-fluid img-thumbnail" />
-				</div>
-				<div class="col-md-6">
-					<h4>Judul Artikel-2</h4>
-					<div>
-						<span class="badge bg-info text-white rounded-3 fs-6">10/11/2011</span>
-						<span class="text-primary fs-6">Created By : Aninur</span>
-					</div>
-					<p>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores fugit quod cumque provident
-						quasi! Ut minus veritatis sed atque, aut
-						modi fugit? Veniam quos voluptatum harum cumque vero, numquam dolore! [ <a
-							href="detailblog2.html">Baca Selengkapnya</a> ]
-					</p>
-					<hr />
-				</div>
-			</div>
+						<?php } ?>
 		</div>
 	</section>
 	<!-- contact us -->

@@ -11,7 +11,7 @@ if (!isset($_GET['act'])) {
                 <th>Action</th>
             </tr>
             <?php
-            $data = mysqli_query($connect_db, "SELECT * FROM mst_kategoriblog");
+            $data = mysqli_query($koneksi, "SELECT * FROM mst_kategoriblog");
             foreach ($data as $d) :
             ?>
                 <tr>

@@ -18,7 +18,21 @@ if (isset($_GET['act']) && ($_GET['act'] == "add")) {
     $isi = $_POST['isi'];
     $author = $_POST['author'];
     $date = $_POST['date_input'];
-    mysqli_query($koneksi, "INSERT INTO mst_blog (judul,id_kategori,isi,author,date_input) VALUES ('$judul','$id_kategori','$isi','$author','$date')");
+    
+    // if(isset($_POST['btnsimpan'])){
+    //     $img=$_FILES['urlfile'];
+    //     $file=$img['name'];
+    //     $targetfol="../../assets/img/";
+    //     $targetfile=$targetfol.$img['name'];
+    //     $type_file=pathinfo($img['name'],PATHINFO_EXTENSION);
+    //     move_uploaded_file($img['tmp_name'],$targetfile);
+    //    //  $is_upload=1;
+    //    // 	if($img['size'] > 1000000){
+    //    // 		$is_upload=0;
+    //    // 		echo '<script>alert("ukuran file terlalu besar")</script>';
+    //    // 	}
+    // }
+    mysqli_query($koneksi, "INSERT INTO mst_blog (judul,id_kategori,isi,author,date_input,image) VALUES ('$judul','$id_kategori','$isi','$author','$date','$file')");
     header("Location: ../home.php?modul=mod_blog");
 } else if (isset($_GET['act']) && ($_GET['act'] == "update")) {
     $id = $_POST['id_blog'];

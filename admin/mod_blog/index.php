@@ -12,13 +12,14 @@ if (!isset($_GET['act'])) {
                 <th>Isi</th>
                 <th>Author</th>
                 <th>Date Input</th>
+                <th>Image</th>
                 <th>Action</th>
             </tr>
             <?php
-            $data = mysqli_query($connect_db, "SELECT * FROM mst_blog");
+            $data = mysqli_query($koneksi, "SELECT * FROM mst_blog");
             foreach ($data as $d) :
                 $id_kat = $d['id_kategori'];
-                $kat = mysqli_query($connect_db, "SELECT nm_kategori FROM mst_kategoriblog WHERE id_kategori=$id_kat");
+                $kat = mysqli_query($koneksi, "SELECT nm_kategori FROM mst_kategoriblog WHERE id_kategori=$id_kat");
                 if ($kat2 = mysqli_fetch_array($kat)) {
             ?>
                     <tr>
@@ -28,6 +29,7 @@ if (!isset($_GET['act'])) {
                         <td><?= $d['isi'] ?></td>
                         <td><?= $d['author'] ?></td>
                         <td><?= $d['date_input'] ?></td>
+                        <td><?= $d['image'] ?></td>
                         <td>
                             <a href="?modul=mod_blog&act=edit&id=<?= $d["id_blog"]; ?>" class="btn btn-xs btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
                             <a href="?modul=mod_blog&act=delete&id=<?= $d["id_blog"]; ?>" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i> Delete</a>
@@ -45,11 +47,11 @@ if (!isset($_GET['act'])) {
             <h3 class="mb-4"><?= $judul; ?></h3>
             <div class="row">
                 <div class="col">
-                    <form action="mod_blog/blog_ctrl.php?modul=mod_blog&act=save" method="POST">
+                    <form action="mod_blog/blog_ctrl.php?modul=mod_blog&act=save" method="POST" enctype="multipart/form-data">
                         <div class="mb-3 row">
                             <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                             <div class="col-sm-6">
-                                <input type="hidden" name="author" value="<?= $_SESSION['userlog']; ?>">
+                                <input type="hidden" name="author" value="<?= $_SESSION['userlogin']; ?>">
                                 <input type="text" class="form-control" id="judul" name="judul">
                             </div>
                         </div>
@@ -59,7 +61,7 @@ if (!isset($_GET['act'])) {
                                 <select class="form-select" aria-label="Default select example" name="id_kategori">
                                     <option selected disabled>-- Pilih Kategori --</option>
                                     <?php
-                                    $kategori = mysqli_query($connect_db, "SELECT * FROM mst_kategoriblog");
+                                    $kategori = mysqli_query($koneksi, "SELECT * FROM mst_kategoriblog");
                                     foreach ($kategori as $k) :
                                     ?>
                                         <option value="<?= $k['id_kategori']; ?>"><?= $k['nm_kategori']; ?></option>
@@ -79,6 +81,12 @@ if (!isset($_GET['act'])) {
                             <label for="date_input" class="col-sm-2 col-form-label">Date Input</label>
                             <div class="col-sm-6">
                                 <input type="date" class="form-control" id="date_input" name="date_input">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                        <label for="date_input" class="col-sm-2 col-form-label">Upload Gambar</label>
+                            <div class="col-sm-6">
+                                <input type="file" name="urlfile" id="urlfile" class="form-control">
                             </div>
                         </div>
                         <div class="row">

@@ -14,7 +14,7 @@ if (!isset($_GET['act'])) {
                 </tr>
             </thead>
             <?php
-            $data = mysqli_query($connect_db, "SELECT * FROM mst_menu");
+            $data = mysqli_query($koneksi, "SELECT * FROM mst_menu");
             foreach ($data as $d) :
             ?>
                 <tr>
