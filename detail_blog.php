@@ -31,7 +31,7 @@ require_once("config/config.php");
                         Created By:<?=$blog['author'];?>
                         <b>#<?=$ktg1['nm_kategori'];?></b>
                     </span><hr>
-                    <img src="asset/img/<?=$blog['image'];?>" width="400px" class="img-responsive center-block d-block mx-auto">
+                    <img src="assets/images/<?=$blog['image'];?>" width="400px" class="img-responsive center-block d-block mx-auto">
                     <p class="text-center"><?=$blog['isi'];?></p>
 				</div>
                 <div class="col-md-2"></div>

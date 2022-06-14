@@ -29,7 +29,7 @@ if (!isset($_GET['act'])) {
                         <td><?= $d['isi'] ?></td>
                         <td><?= $d['author'] ?></td>
                         <td><?= $d['date_input'] ?></td>
-                        <td><?= $d['image'] ?></td>
+                        <td><img src="../assets/images/<?= $d['image'];?>" width="300px" ></td>
                         <td>
                             <a href="?modul=mod_blog&act=edit&id=<?= $d["id_blog"]; ?>" class="btn btn-xs btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
                             <a href="?modul=mod_blog&act=delete&id=<?= $d["id_blog"]; ?>" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i> Delete</a>

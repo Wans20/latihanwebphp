@@ -118,7 +118,7 @@ require_once("config/config.php");
 						<span class="text-primary fs-6">Created By : <?=$qblog['author']?></span>
 					</div>
 					<p>
-						<?= $qblog['isi']?>
+						<?= substr($qblog['isi'],0,200);?>
 						<a href='detail_blog.php?id=<?=$qblog['id_blog']?>'>Baca Selengkapnya</a>
 					</p>
 					<hr />
